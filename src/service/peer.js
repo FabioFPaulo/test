@@ -31,8 +31,8 @@ class PeerService {
 
   async getOffer() {
     if (this.peer) {
-      const offer = await this.peer.createOffer();
-      await this.peer.setLocalDescription(new RTCSessionDescription(offer));
+      const offer = await this.peer.createOffer({ offerToReceiveVideo: 1 });
+      await this.peer.setLocalDescription(offer);
       return offer;
     }
   }
